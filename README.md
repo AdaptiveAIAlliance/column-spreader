@@ -19,7 +19,7 @@ pip install pandas
 4. Specify the output file path by updating the `output_file_path` variable in the script. The unique values from the first column will be written to this file.
 
 5. Run the script using the following command:
-python script.py
+python main.py
 
 6. The script will process the CSV file, extract the unique values from the first column, and write them to the specified output file.
 
