@@ -48,8 +48,8 @@ def get_numbers_with_repetition(csv_file, digit, number_of_repetition):
 
     # Iterate over the CSV file in chunks
     for chunk in pd.read_csv(csv_file, chunksize=chunk_size, usecols=[0]):
-        filtered_values = chunk.iloc[:, 0].astype(str).str.apply(
-            lambda x: str(x).count(str(digit)) == number_of_repetition)
+        filtered_values = chunk.iloc[:, 0].astype(str).apply(
+            lambda x: str(x)[3:].count(str(digit)) == number_of_repetition)
         output_values.update(
             chunk.loc[filtered_values, chunk.columns[0]].unique())
 
@@ -65,7 +65,7 @@ numbers_with_three_six_path = "./numbers_with_three_six.csv"
 # write_unique_values(unique_values, output_file_path)
 
 numbers_with_three_six = get_numbers_with_repetition(csv_file_path, 6, 3)
-write_unique_values(numbers_with_three_six, output_file_path)
+write_unique_values(numbers_with_three_six, numbers_with_three_six_path)
 
 
-print("Unique values from the first column have been written to", output_file_path)
+# print("Unique values from the first column have been written to", output_file_path)
